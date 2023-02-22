@@ -1,22 +1,22 @@
 <jsp:include page="WEB-INF/pages/comunes/inicioHTML.jsp">
-    <jsp:param name="elTitulo" value="CRUD Basketball" />
+    <jsp:param name="elTitulo" value="JavaWebApp" />
 </jsp:include>
 
 <jsp:include page="WEB-INF/pages/comunes/navbar.jsp" />
 
 <div class="container">
     <div class="p-5 mb-2">
-        <h1 class="display-5 fw-bold">Bienvenido a la JavaWebApp: Registrï¿½ tu jugador NBA! </h1>
+        <h1 class="display-5 fw-bold">Bienvenido a la JavaWebApp: Registrá tu jugador NBA favorito! </h1>
         <p class="fs-5">Este es un proyecto CRUD (Create, Read, Update, Delete) WebApp Java MVC realizado por <a target="_blank" href="https://www.linkedin.com/in/paolettigino/"> Gino Paoletti Geuna</a>.</p>
         <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
-                <div class="carousel-item active imgcarousel">
+            <div class="carousel-inner" style=" width:100%; height: 500px">
+                <div class="carousel-item active ">
                     <img src="assets/carrousel1.jpg" class="d-block w-100" alt="slide1">
                 </div>
-                <div class="carousel-item imgcarousel">
+                <div class="carousel-item ">
                     <img src="assets/carrousel2.jpg" class="d-block w-100" alt="slide2">
                 </div>
-                <div class="carousel-item imgcarousel">
+                <div class="carousel-item ">
                     <img src="assets/carrousel3.jpg" class="d-block w-100" alt="slide3">
                 </div>
             </div>
@@ -32,7 +32,7 @@
         </div>
 
 
-        <a class="btn btn-warning btn-lg mt-4" href="${pageContext.request.contextPath}/arma-tu-equipo">Armï¿½ tu equipo!</a>
+        <a class="btn btn-dark btn-lg mt-4" href="${pageContext.request.contextPath}/arma-tu-equipo">Registrá tu jugador/es!</a>
     </div>
 </div>
 
