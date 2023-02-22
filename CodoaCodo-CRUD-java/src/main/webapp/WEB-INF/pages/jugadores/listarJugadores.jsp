@@ -34,7 +34,7 @@
     </c:choose>
 </section>
 
-<jsp:include page="partes/modalAgregarAlumno.jsp"/>     
+<jsp:include page="partes/modalAgregarJugador.jsp"/>     
 <script src="scripts/fotobase64.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
