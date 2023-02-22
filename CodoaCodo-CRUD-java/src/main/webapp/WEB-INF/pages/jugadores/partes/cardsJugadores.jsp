@@ -4,7 +4,7 @@
         <div class="card h-100">
             <jsp:include page="dataCardJugador.jsp">
                 <jsp:param name="fotoJugador" value="${jugador.foto}" />
-                <jsp:param name="nombreCompletoJugador" value="${jugador.nombreCompleto}"  
+                <jsp:param name="nombreCompletoJugador" value="${jugador.nombreCompleto}" />
             </jsp:include>
             <div class="card-footer">
                 <div class="row justify-content-center">
