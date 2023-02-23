@@ -2,10 +2,10 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar alumno</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Jugador</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="formAgregarAlumno" action="${pageContext.request.contextPath}/app?accion=add"
+            <form id="formAgregarAlumno" action="${pageContext.request.contextPath}/arma-tu-equipo?accion=add"
                   method="post" class="was-validated">
                 <div class="modal-body">
                     <div class="row">
@@ -18,12 +18,16 @@
                             <input type="text" class="form-control" id="apellido" name="apellido" required>
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <label for="mail" class="form-label">Mail</label>
-                            <input type="text" class="form-control" id="mail" name="mail" required>
+                            <label for="estatura" class="form-label">Estatura</label>
+                            <input type="text" class="form-control" id="estatura" name="estatura" required>
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" id="fechaNac" name="fechaNac" required>
+                            <label for="posicion" class="form-label">Posición</label>
+                            <input type="text" class="form-control" id="posicion" name="posicion" required>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <label for="dorsal" class="form-label">Dorsal</label>
+                            <input type="text" class="form-control" id="dorsal" name="dorsal" required>
                         </div>
                         <div class="col-12 mb-3">
                             <label for="foto" class="form-label">Cargar foto</label>

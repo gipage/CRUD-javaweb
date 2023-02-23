@@ -10,7 +10,7 @@
     <div class="row pt-3">
         <h1 class="h3">Listado de jugadores</h1>
         <p class="lead">Se listan todos los jugadores existentes en la base de datos</p>
-        <p class="small">Los datos de la personas aquí listadas son ficticios. Sus rostros fueron generados con inteligencia artificial.</p>
+        
         <div>
             <a href="#" class="btn btn-success"
                data-bs-toggle="modal" data-bs-target="#modalAgregarAlumno"><i class="bi bi-person-add"></i>

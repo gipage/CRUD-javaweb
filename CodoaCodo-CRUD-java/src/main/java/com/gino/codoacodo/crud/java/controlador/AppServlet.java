@@ -17,21 +17,65 @@ import java.io.IOException;
  *
  * @author ginop
  */
-@WebServlet(name = "AppServlet", urlPatterns={"/arma-tu-equipo"})
+@WebServlet(name = "AppServlet", urlPatterns = {"/arma-tu-equipo"})
 public class AppServlet extends HttpServlet {
+
     private static final String URI_LISTAR = "WEB-INF/pages/jugadores/listarJugadores.jsp";
+    private static final String URI_BORRAR = "WEB-INF/pages/jugadores/borrarJugador.jsp";
     private Modelo model;
-    
+
     @Override
-    public void init() throws ServletException{
+    public void init() throws ServletException {
         this.model = new ModeloHC();
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("listaJugadores", model.getJugadores()); 
-        req.getRequestDispatcher(URI_LISTAR).forward(req, resp);
+        String laAccion = req.getParameter("accion");
+        String idStr = req.getParameter("id");
+        int id = (idStr == null ? -1 : Integer.parseInt(idStr));
+        laAccion = (laAccion == null ? "" : laAccion);
+        switch (laAccion) {
+            case "remove":
+                req.setAttribute("jugadorABorrar", model.getJugador(id));
+                req.getRequestDispatcher(URI_BORRAR).forward(req, resp);                
+                break;
+            case "edit":
+                break;
+            case "add":
+                break;
+            default: {
+                req.setAttribute("listaJugadores", model.getJugadores());
+                req.getRequestDispatcher(URI_LISTAR).forward(req, resp);
+            }
+
+        }
+
     }
-    
-    
+
+    //POST: Cambios en el servidoooor!
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String laAccion = req.getParameter("accion");
+        String idStr = req.getParameter("id");
+        int id = (idStr == null ? -1 : Integer.parseInt(idStr));
+        laAccion = (laAccion == null ? "" : laAccion);
+        switch (laAccion) {
+            case "remove":
+                model.removeJugador(id);
+                resp.sendRedirect(getServletContext().getContextPath() + "/arma-tu-equipo");
+                break;
+            case "edit":
+                break;
+            case "add":
+                break;
+            default: {
+                req.setAttribute("listaJugadores", model.getJugadores());
+                req.getRequestDispatcher(URI_LISTAR).forward(req, resp);
+            }
+
+        }
+
+    }
+
 }
