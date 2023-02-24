@@ -1,11 +1,11 @@
-<div class="modal fade" id="modalAgregarAlumno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalAgregarJugador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Jugador</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="formAgregarAlumno" action="${pageContext.request.contextPath}/arma-tu-equipo?accion=add"
+            <form id="formAgregarJugador" action="${pageContext.request.contextPath}/arma-tu-equipo?accion=add"
                   method="post" class="was-validated">
                 <div class="modal-body">
                     <div class="row">

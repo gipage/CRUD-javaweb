@@ -50,8 +50,6 @@ public class AppServlet extends HttpServlet {
                 req.getRequestDispatcher(URI_EDITAR).forward(req, resp);
                 break;
             }
-            case "add":
-                break;
             default: {
                 req.setAttribute("listaJugadores", model.getJugadores());
                 req.getRequestDispatcher(URI_LISTAR).forward(req, resp);
@@ -71,24 +69,27 @@ public class AppServlet extends HttpServlet {
         switch (laAccion) {
             case "delete": {
                 model.removeJugador(id);
-                resp.sendRedirect(getServletContext().getContextPath() + "/arma-tu-equipo");
                 break;
             }
             case "update": {
                 Jugador jugador = model.getJugador(id);
                 cargarJugador(jugador, req);
                 model.updateJugador(jugador);
-                resp.sendRedirect(getServletContext().getContextPath() + "/arma-tu-equipo");
                 break;
             }
-            case "add":
+            case "add": {
+                Jugador jugador = new Jugador();
+                cargarJugador(jugador, req);
+                model.addJugador(jugador);
                 break;
+            }
             default: {
                 req.setAttribute("listaJugadores", model.getJugadores());
                 req.getRequestDispatcher(URI_LISTAR).forward(req, resp);
             }
 
         }
+        resp.sendRedirect(getServletContext().getContextPath() + "/arma-tu-equipo");
 
     }
 
@@ -99,6 +100,6 @@ public class AppServlet extends HttpServlet {
         jugador.setPosicion(req.getParameter("posicion"));
         jugador.setEstatura(Float.parseFloat(req.getParameter("estatura")));
         jugador.setDorsal(Integer.parseInt(req.getParameter("dorsal")));
-        
+
     }
 }
