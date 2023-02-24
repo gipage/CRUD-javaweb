@@ -13,7 +13,7 @@
         
         <div>
             <a href="#" class="btn btn-success"
-               data-bs-toggle="modal" data-bs-target="#modalAgregarAlumno"><i class="bi bi-person-add"></i>
+               data-bs-toggle="modal" data-bs-target="#modalAgregarJugador"><i class="bi bi-person-add"></i>
                 Agregar jugador</a>
         </div>
     </div>

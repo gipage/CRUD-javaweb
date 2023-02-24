@@ -5,7 +5,7 @@
  https://morioh.com/p/872a8ce21d61
  */
 
-const form = document.getElementById('formAgregarAlumno');
+const form = document.getElementById('formAgregarJugador');
 const fotoInput = document.getElementById('inputFoto');
 
 let fotoCodif;

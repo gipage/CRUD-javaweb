@@ -61,6 +61,9 @@ public class ModeloHC implements Modelo {
             Properties props = new Properties();
             props.load(is);
             this.jugadoresGuardados.add(new Jugador(1, "Lebron", "James", (float)2.06, "Alero",10, (String) props.get("HOMBRE_1")));
+             this.jugadoresGuardados.add(new Jugador(2, "emi", "gil", (float)3.06, "Alero",12, (String) props.get("MUJER_1")));
+             
+              
            
         } catch (IOException ex) {
             throw new RuntimeException("No se pudieron cargar las caras fake");

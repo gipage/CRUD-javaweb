@@ -38,16 +38,18 @@ public class AppServlet extends HttpServlet {
         int id = (idStr == null ? -1 : Integer.parseInt(idStr));
         laAccion = (laAccion == null ? "" : laAccion);
         switch (laAccion) {
-            case "remove":{
+            case "remove": {
                 req.setAttribute("jugadorABorrar", model.getJugador(id));
-                req.getRequestDispatcher(URI_BORRAR).forward(req, resp);                
-                break;}
-            case "edit":{
+                req.getRequestDispatcher(URI_BORRAR).forward(req, resp);
+                break;
+            }
+            case "edit": {
                 Jugador juga = model.getJugador(id);
                 req.setAttribute("jugadorAEditar", juga);
                 req.setAttribute("yaTieneFoto", !juga.getFoto().contains("no-face"));
                 req.getRequestDispatcher(URI_EDITAR).forward(req, resp);
-                break;}
+                break;
+            }
             case "add":
                 break;
             default: {
@@ -67,21 +69,18 @@ public class AppServlet extends HttpServlet {
         int id = (idStr == null ? -1 : Integer.parseInt(idStr));
         laAccion = (laAccion == null ? "" : laAccion);
         switch (laAccion) {
-            case "delete":{
+            case "delete": {
                 model.removeJugador(id);
                 resp.sendRedirect(getServletContext().getContextPath() + "/arma-tu-equipo");
-                break;}
-            case "update":{
+                break;
+            }
+            case "update": {
                 Jugador jugador = model.getJugador(id);
-                jugador.setNombre(req.getParameter("nombre"));
-                jugador.setApellido(req.getParameter("apellido"));
-                jugador.setPosicion(req.getParameter("posicion"));
-                jugador.setEstatura(Float.parseFloat(req.getParameter("estatura")));
-                jugador.setDorsal(Integer.parseInt(req.getParameter("dorsal")));
-                jugador.setFoto(req.getParameter("fotoBase64"));
+                cargarJugador(jugador, req);
                 model.updateJugador(jugador);
                 resp.sendRedirect(getServletContext().getContextPath() + "/arma-tu-equipo");
-                break;}
+                break;
+            }
             case "add":
                 break;
             default: {
@@ -93,4 +92,13 @@ public class AppServlet extends HttpServlet {
 
     }
 
+    private void cargarJugador(Jugador jugador, HttpServletRequest req) {
+        jugador.setFoto(req.getParameter("fotoBase64"));
+        jugador.setNombre(req.getParameter("nombre"));
+        jugador.setApellido(req.getParameter("apellido"));
+        jugador.setPosicion(req.getParameter("posicion"));
+        jugador.setEstatura(Float.parseFloat(req.getParameter("estatura")));
+        jugador.setDorsal(Integer.parseInt(req.getParameter("dorsal")));
+        
+    }
 }

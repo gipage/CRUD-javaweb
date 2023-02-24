@@ -72,7 +72,7 @@
 
 </section>
 
-<script src="scripts/fotobase64.js"></script>
+<script src="scripts/fotobase64new.js"></script>
 <jsp:include page="../comunes/footer.jsp"/>
 <jsp:include page="../comunes/finHTML.jsp"/>
 
