@@ -23,7 +23,7 @@
             </div>
             <div class="col-sm-5 col-md-6 col-lg-4">
    
-                <form action="${pageContext.request.contextPath}/arma-tu-equipo?accion=remove&id=${jugadorABorrar.id}"
+                <form action="${pageContext.request.contextPath}/arma-tu-equipo?accion=delete&id=${jugadorABorrar.id}"
                       method="post" class="was-validated border p-2 rounded-3 bg-light">
                     <div class="row text-center">
                         <div class="col-12 mb-2">

@@ -83,7 +83,12 @@ public class Jugador {
     }
 
     public void setFoto(String foto) {
-        this.foto = foto;
+         if (foto == null || foto.trim().isEmpty()) {
+            foto = "assets/no-face.jpg";
+        }
+        if (!foto.contains("no-face") || this.foto == null || this.foto.contains("no-face")) {
+            this.foto = foto.trim();
+        }
     }
     public String getNombreCompleto() {
         return nombre + " " + apellido;
