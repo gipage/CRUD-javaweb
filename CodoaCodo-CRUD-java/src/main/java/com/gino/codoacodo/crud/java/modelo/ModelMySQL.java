@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class ModelMySQL implements Modelo {
 
     private static final String GET_ALL_QUERY = "Select * from jugadores";
-
+    private static final String DELETE_QUERY = "DELETE FROM jugadores WHERE id = ?";
     @Override
     public List<Jugador> getJugadores() {
         List<Jugador> arraylistJugadores = new ArrayList<>();
@@ -67,7 +67,18 @@ public class ModelMySQL implements Modelo {
 
     @Override
     public int removeJugador(int id) {
-        return 0;
+        int retorno;
+        try (Connection con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement(DELETE_QUERY);)
+        {            
+            ps.setInt(1, id);
+            retorno = ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error de SQL", ex);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al borrar alumno", ex);
+        }
+        return retorno;
     }
 
     private Jugador rstoJugador(ResultSet rs) throws SQLException {
