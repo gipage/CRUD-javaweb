@@ -5,6 +5,7 @@
 package com.gino.codoacodo.crud.java.controlador;
 
 import com.gino.codoacodo.crud.java.modelo.Jugador;
+import com.gino.codoacodo.crud.java.modelo.ModelMySQL;
 import com.gino.codoacodo.crud.java.modelo.Modelo;
 import com.gino.codoacodo.crud.java.modelo.ModeloHC;
 import jakarta.servlet.ServletException;
@@ -28,7 +29,7 @@ public class AppServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        this.model = new ModeloHC();
+        this.model = new ModelMySQL();
     }
 
     @Override
