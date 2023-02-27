@@ -24,10 +24,8 @@ public class ModelMySQL implements Modelo {
     @Override
     public List<Jugador> getJugadores() {
         List<Jugador> arraylistJugadores = new ArrayList<>();
-        try {
-            Connection con = Conexion.getConnection();
-            PreparedStatement ps = con.prepareStatement(GET_ALL_QUERY);
-            ResultSet rs = ps.executeQuery();
+        //try() cierra los recursos (interfaz auto cerreable)
+        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(GET_ALL_QUERY); ResultSet rs = ps.executeQuery();) {
             while (rs.next()) {
                 arraylistJugadores.add(rstoJugador(rs));
             }
@@ -43,7 +41,18 @@ public class ModelMySQL implements Modelo {
 
     @Override
     public Jugador getJugador(int id) {
-        return null;
+        Jugador jugador = null;
+        try (
+                Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT * FROM jugadores WHERE id = ?");) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery();) {
+                rs.next();
+                jugador = rstoJugador(rs);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModelMySQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return jugador;
     }
 
     @Override
