@@ -21,6 +21,8 @@ public class ModelMySQL implements Modelo {
 
     private static final String GET_ALL_QUERY = "Select * from jugadores";
     private static final String DELETE_QUERY = "DELETE FROM jugadores WHERE id = ?";
+    private static final String ADD_QUERY = "INSERT INTO jugadores VALUES(null, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_QUERY = "UPDATE jugadores SET nombre=?, apellido=?, estatura=?, posicion=?, dorsal=?, fotoBase64=? WHERE id=?";
     @Override
     public List<Jugador> getJugadores() {
         List<Jugador> arraylistJugadores = new ArrayList<>();
@@ -57,12 +59,45 @@ public class ModelMySQL implements Modelo {
 
     @Override
     public int addJugador(Jugador jugador) {
-        return 0;
+        int retorno;
+        try (Connection con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement(ADD_QUERY);)
+        {            
+            ps.setString(1, jugador.getNombre());
+            ps.setString(2, jugador.getApellido());
+            ps.setFloat(3, jugador.getEstatura());
+            ps.setString(4, jugador.getPosicion());
+            ps.setInt(5, jugador.getDorsal());
+            ps.setString(6, jugador.getFoto());
+            retorno = ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error de SQL", ex);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al borrar alumno", ex);
+        }
+        return retorno;  
     }
 
     @Override
     public int updateJugador(Jugador jugador) {
-        return 0;
+        int retorno;
+        try (Connection con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement(UPDATE_QUERY);)
+        {            
+            ps.setString(1, jugador.getNombre());
+            ps.setString(2, jugador.getApellido());
+            ps.setFloat(3, jugador.getEstatura());
+            ps.setString(4, jugador.getPosicion());
+            ps.setInt(5, jugador.getDorsal());
+            ps.setString(6, jugador.getFoto());
+            ps.setInt(7, jugador.getId());
+            retorno = ps.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error de SQL", ex);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al borrar alumno", ex);
+        }
+        return retorno;  
     }
 
     @Override
