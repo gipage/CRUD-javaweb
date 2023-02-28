@@ -14,17 +14,14 @@
                 </jsp:include>
             </div>    
         </div>   
-     <div class="col-md-5 col-lg-8">
-            <labelp class="fs-5">Nombre:</label> 
-            <label class="fs-6">${jugadorAVer.nombre}</label><br>
-            <label class="fs-5">Apellido:</label>
-            <label class="fs-6">${jugadorAVer.apellido}</label><br>
-            <label class="fs-5">Estatura:</label>
-            <label class="fs-6">${jugadorAVer.estatura}</label><br>
-            <label class="fs-5">Posición:</label>
-            <label class="fs-6">${jugadorAVer.posicion}</label><br>   
-            <label class="fs-5">Dorsal:</label>
-            <label class="fs-6">${jugadorAVer.dorsal}</label>     
+        <div class="col-md-5 col-lg-8">
+            <ul class="list-group">
+                <li class="list-group-item">Nombre: ${jugadorAVer.nombre}</li>
+                <li class="list-group-item">Apellido: ${jugadorAVer.apellido}</li>
+                <li class="list-group-item">Estatura: ${jugadorAVer.estatura}</li>
+                <li class="list-group-item">Posición: ${jugadorAVer.posicion}</li>
+                <li class="list-group-item">Dorsal: ${jugadorAVer.dorsal}</li>
+            </ul>  
         </div>
         <div class="row justify-content-end mt-2">
             <div class="col-12">

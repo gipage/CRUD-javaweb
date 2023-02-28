@@ -9,10 +9,10 @@
             <div class="card-footer">
                 <div class="row justify-content-center">
                     <div class="col-4">
-                        <a href="${pageContext.request.contextPath}/arma-tu-equipo?accion=view&id=${jugador.id}" class="btn bg-info w-100"><i class="bi bi-eye"></i></a>
+                        <a href="${pageContext.request.contextPath}/arma-tu-equipo?accion=view&id=${jugador.id}" class="btn bg-info w-100 text-light"><i class="bi bi-eye"></i></a>
                     </div>
                     <div class="col-4">
-                        <a href="${pageContext.request.contextPath}/arma-tu-equipo?accion=edit&id=${jugador.id}" class="btn bg-warning w-100"><i class="bi bi-pencil"></i></a>
+                        <a href="${pageContext.request.contextPath}/arma-tu-equipo?accion=edit&id=${jugador.id}" class="btn bg-success text-light w-100"><i class="bi bi-pencil"></i></a>
                     </div>
                     <div class="col-4">
                         <a href="${pageContext.request.contextPath}/arma-tu-equipo?accion=remove&id=${jugador.id}" class="btn bg-danger text-light w-100"><i class="bi bi-trash3"></i></a>
