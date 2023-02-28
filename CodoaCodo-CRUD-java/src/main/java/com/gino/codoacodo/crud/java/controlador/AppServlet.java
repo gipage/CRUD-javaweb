@@ -25,6 +25,7 @@ public class AppServlet extends HttpServlet {
     private static final String URI_LISTAR = "WEB-INF/pages/jugadores/listarJugadores.jsp";
     private static final String URI_BORRAR = "WEB-INF/pages/jugadores/borrarJugador.jsp";
     private static final String URI_EDITAR = "WEB-INF/pages/jugadores/editarJugador.jsp";
+    private static final String URI_VER = "WEB-INF/pages/jugadores/verJugador.jsp";
     private Modelo model;
 
     @Override
@@ -51,6 +52,11 @@ public class AppServlet extends HttpServlet {
                 req.getRequestDispatcher(URI_EDITAR).forward(req, resp);
                 break;
             }
+            case "view":{
+               req.setAttribute("jugadorAVer", model.getJugador(id));
+               req.getRequestDispatcher(URI_VER).forward(req, resp);
+            
+            }break;
             default: {
                 req.setAttribute("listaJugadores", model.getJugadores());
                 req.getRequestDispatcher(URI_LISTAR).forward(req, resp);
