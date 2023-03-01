@@ -21,7 +21,7 @@ public class Conexion {
     private  Connection connection = null;
 
     private Conexion() {
-        String url = "jdbc:mysql://us-east.connect.psdb.cloud:3306/crud-java?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
+        String url = "jdbc:mysql://us-east.connect.psdb.cloud:3306/crud-java?autoReconnect=true&useSSL=false&serverTimezone\\=US/Eastern";
         String user = "dkbvfnlb2sicygs37eoa";
         String password = "pscale_pw_K35LR0aUdA4c1ViCzOL5jS0LbLnnP6eS9XFknBSdNll";
         try {
