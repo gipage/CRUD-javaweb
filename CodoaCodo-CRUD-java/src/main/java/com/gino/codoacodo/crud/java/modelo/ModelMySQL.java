@@ -23,11 +23,12 @@ public class ModelMySQL implements Modelo {
     private static final String DELETE_QUERY = "DELETE FROM jugadores WHERE id = ?";
     private static final String ADD_QUERY = "INSERT INTO jugadores VALUES(null, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE_QUERY = "UPDATE jugadores SET nombre=?, apellido=?, estatura=?, posicion=?, dorsal=?, fotoBase64=? WHERE id=?";
+    private final  Conexion conexion=Conexion.getInstance();
     @Override
     public List<Jugador> getJugadores() {
         List<Jugador> arraylistJugadores = new ArrayList<>();
         //try() cierra los recursos (interfaz auto cerreable)
-        try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(GET_ALL_QUERY); ResultSet rs = ps.executeQuery();) {
+        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(GET_ALL_QUERY); ResultSet rs = ps.executeQuery();) {
             while (rs.next()) {
                 arraylistJugadores.add(rstoJugador(rs));
             }
@@ -45,7 +46,7 @@ public class ModelMySQL implements Modelo {
     public Jugador getJugador(int id) {
         Jugador jugador = null;
         try (
-                Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT * FROM jugadores WHERE id = ?");) {
+                Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT * FROM jugadores WHERE id = ?");) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery();) {
                 rs.next();
@@ -60,7 +61,7 @@ public class ModelMySQL implements Modelo {
     @Override
     public int addJugador(Jugador jugador) {
         int retorno;
-        try (Connection con = Conexion.getConnection();
+        try (Connection con = conexion.getConnection();
             PreparedStatement ps = con.prepareStatement(ADD_QUERY);)
         {            
             ps.setString(1, jugador.getNombre());
@@ -81,7 +82,7 @@ public class ModelMySQL implements Modelo {
     @Override
     public int updateJugador(Jugador jugador) {
         int retorno;
-        try (Connection con = Conexion.getConnection();
+        try (Connection con = conexion.getConnection();
             PreparedStatement ps = con.prepareStatement(UPDATE_QUERY);)
         {            
             ps.setString(1, jugador.getNombre());
@@ -103,7 +104,7 @@ public class ModelMySQL implements Modelo {
     @Override
     public int removeJugador(int id) {
         int retorno;
-        try (Connection con = Conexion.getConnection();
+        try (Connection con = conexion.getConnection();
             PreparedStatement ps = con.prepareStatement(DELETE_QUERY);)
         {            
             ps.setInt(1, id);

@@ -5,9 +5,11 @@
 package com.gino.codoacodo.crud.java.modelo;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.sql.DataSource;
-import org.apache.commons.dbcp2.BasicDataSource;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -15,28 +17,34 @@ import org.apache.commons.dbcp2.BasicDataSource;
  */
 public class Conexion {
 
-    private static final String URL_DB = "jdbc:mysql://root:vivi@localhost:3306/crud-jugadores?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
-    private static Connection con;
-    private static BasicDataSource dataSource;
+    private static Conexion instance = null;
+    private  Connection connection = null;
 
     private Conexion() {
-    }
-
-    public static DataSource getDataSource() {
-        if (dataSource == null) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                dataSource = new BasicDataSource();
-                dataSource.setUrl(URL_DB);
-                dataSource.setInitialSize(50);
-            } catch (Exception ex) {
-                throw new RuntimeException("Error de E/S al leer config de BBDD", ex);
-            }
+        String url = "jdbc:mysql://us-east.connect.psdb.cloud:3306/crud-java?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
+        String user = "dkbvfnlb2sicygs37eoa";
+        String password = "pscale_pw_K35LR0aUdA4c1ViCzOL5jS0LbLnnP6eS9XFknBSdNll";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            System.out.println("Error al conectarse a la base de datos: " + e.getMessage());
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return dataSource;
     }
 
-    public static Connection getConnection() throws SQLException {
-        return getDataSource().getConnection();
+    public static Conexion getInstance() {
+        if (instance == null) {
+            instance = new Conexion();
+        }
+
+        return instance;
     }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
 }
