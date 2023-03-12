@@ -4,4 +4,4 @@ El backend fue realizado en Java aplicando conceptos aprendidos como Arquitectur
 El front-end realizado con HTML, CSS, Bootstrap 5 y JSP.
 La java web-app permite al usuario agregar, modificar, eliminar y ver un jugador NBA.
 ![](https://github.com/gipage/CRUD-javaweb/imagenes/crud.png)
-![](https://github.com/gipage/CRUD-javaweb/imagenes/crud2.png)
+
